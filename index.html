@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WAYLO — Your Route. Shared.</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="nav">
+  <a class="logo" href="#top">
+    <span>w</span>
+    <b>WAYLO<small>Your route. Shared.</small></b>
+  </a>
+
+  <nav>
+    <a href="#find">Find a ride</a>
+    <a href="#offer">Offer a ride</a>
+    <a href="#calculator">Cost sharing</a>
+    <a href="#safety">Safety</a>
+  </nav>
+
+  <a class="nav-cta" href="#find">Find your ride ↗️</a>
+</header>
+
+<main id="top">
+
+  <section class="hero">
+    <div>
+      <p class="eyebrow">● A SMARTER WAY TO GET THERE</p>
+
+      <h1>Your next ride is<br>
+        already <em>going your way.</em>
+      </h1>
+
+      <p class="intro">
+        WAYLO matches you with commuters whose pickup area,
+        destination and departure time overlap with yours —
+        then shows a fair, transparent cost split.
+      </p>
+
+      <div class="features">
+        <span>↗️ <b>Smarter matching</b>
+          <small>Ranked by route &amp; time</small>
+        </span>
+        <span>₹ <b>Fair cost sharing</b>
+          <small>Equal, visible maths</small>
+        </span>
+        <span>♡ <b>Safety-first</b>
+          <small>Honest profile labels</small>
+        </span>
+      </div>
+
+      <a class="button" href="#find">Find a ride →</a>
+    </div>
+
+    <div class="hero-art">
+      <div class="art-label">✦ SAME WAY, BETTER TOGETHER</div>
+      <div class="pin pin1">↗️</div>
+      <div class="pin pin2">⌖</div>
+
+      <div class="car"><i></i><b></b><span></span></div>
+
+      <div class="floating">
+        <span class="avatar">AR</span>
+        <div>
+          <b>Ananya's ride</b>
+          <small>Rajajinagar → Global Village</small>
+        </div>
+        <strong>₹120<small>/ seat</small></strong>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="find">
+    <div class="heading">
+      <div>
+        <p class="eyebrow">LET'S GET YOU THERE</p>
+        <h2>Find a ride</h2>
+        <p>Tell us where you're headed. We'll help find a match.</p>
+      </div>
+      <span class="demo">● DEMO DATA</span>
+    </div>
+
+    <form id="searchForm" class="search">
+      <label>Pickup area
+        <input id="pickup" placeholder="e.g. Rajajinagar">
+      </label>
+
+      <label>Destination
+        <input id="destination" placeholder="e.g. Global Village">
+      </label>
+
+      <label>Date
+        <input id="date" type="date">
+      </label>
+
+      <label>Departure time
+        <select id="time">
+          <option value="any">Any time</option>
+          <option value="morning">Morning · 6–11 AM</option>
+          <option value="midday">Midday · 11 AM–4 PM</option>
+          <option value="evening">Evening · 4–10 PM</option>
+        </select>
+      </label>
+
+      <label>Seats needed
+        <select id="seats">
+          <option value="1">1 passenger</option>
+          <option value="2">2 passengers</option>
+          <option value="3">3 passengers</option>
+        </select>
+      </label>
+
+      <button class="button" type="submit">Search rides →</button>
+    </form>
+
+    <div class="quick">
+      Try:
+      <button data-p="Vijayanagar" data-d="Global Village">
+        Vijayanagar → Global Village
+      </button>
+      <button data-p="RR Nagar" data-d="Malleshwaram">
+        RR Nagar → Malleshwaram
+      </button>
+    </div>
+
+    <div class="stats">
+      <div><b id="rideCount">6</b><small>Rides available</small></div>
+      <div><b id="seatCount">14</b><small>Open seats</small></div>
+      <div><b id="avg">₹149</b><small>Avg. est. share</small></div>
+      <span>Illustrative demo listings stored on this device.</span>
+      <button id="reset" class="reset">Reset demo</button>
+    </div>
+
+    <div class="list-head">
+      <div>
+        <h3>Available rides</h3>
+        <p id="resultsText">Browse available rides around Bengaluru.</p>
+      </div>
+      <span>BEST MATCH ↓</span>
+    </div>
+
+    <div id="rides" class="rides"></div>
+    <p id="empty" class="empty hidden">
+      No rides found. Try another pickup or destination.
+    </p>
+  </section>
+
+  <section class="columns">
+
+    <section class="panel" id="offer">
+      <p class="eyebrow">GOING SOMEWHERE?</p>
+      <h2>Offer a ride</h2>
+      <p>Publish your commute. It joins search results instantly.</p>
+
+      <form id="offerForm" class="stack">
+        <label>Display name
+          <input id="name" required placeholder="e.g. Meera K">
+        </label>
+
+        <div class="two">
+          <label>Pickup area
+            <input id="from" required placeholder="Starting area">
+          </label>
+          <label>Destination
+            <input id="to" required placeholder="Destination">
+          </label>
+        </div>
+
+        <div class="two">
+          <label>Date
+            <input id="offerDate" type="date" required>
+          </label>
+          <label>Departure time
+            <input id="offerTime" type="time" value="08:30" required>
+          </label>
+        </div>
+
+        <div class="two">
+          <label>Passenger seats
+            <input id="offerSeats" type="number" min="1" max="7" value="3" required>
+          </label>
+          <label>Total trip cost (₹)
+            <input id="offerCost" type="number" min="1" value="480" required>
+          </label>
+        </div>
+
+        <label>Note (optional)
+          <input id="note" placeholder="e.g. Pickup near metro station">
+        </label>
+
+        <label class="check">
+          <input id="recurring" type="checkbox">
+          I make this trip regularly
+        </label>
+
+        <div class="preview" id="preview">Full car: ₹120 each</div>
+        <button class="button" type="submit">Publish ride →</button>
+        <p id="offerMsg" class="message"></p>
+      </form>
+    </section>
+
+    <section class="panel" id="calculator">
+      <p class="eyebrow">NO SURPRISES</p>
+      <h2>Cost-share calculator</h2>
+      <p>See a fair estimate before you request a seat.</p>
+
+      <label>Total cost (₹)
+        <input id="cost" type="number" value="480" min="1">
+      </label>
+
+      <label>People sharing
+        <select id="people">
+          <option>2</option>
+          <option>3</option>
+          <option selected>4</option>
+          <option>5</option>
+          <option>6</option>
+        </select>
+      </label>
+
+      <div class="result">
+        <small>Estimated share per person</small>
+        <b id="share">₹120</b>
+        <span id="math">₹480 ÷ 4 people</span>
+      </div>
+
+      <p class="fine">
+        Illustrative estimate only. WAYLO doesn't handle payments or billing.
+      </p>
+    </section>
+  </section>
+
+  <section class="panel requests">
+    <p class="eyebrow">YOUR COMMUTE, IN ONE PLACE</p>
+    <h2>My requests</h2>
+    <p>Simulated on this device. No real driver is contacted and no booking is made.</p>
+    <div id="requests" class="request-empty">
+      No requests yet. Search for a ride and tap “Request seat”.
+    </div>
+  </section>
+
+  <section class="how">
+    <p class="eyebrow">HOW WAYLO WORKS</p>
+    <h2>A better commute, in three steps.</h2>
+
+    <div class="steps">
+      <article>
+        <b>01</b>
+        <h3>Tell us your commute</h3>
+        <p>Pickup area, destination, time and flexibility.</p>
+      </article>
+
+      <article>
+        <b>02</b>
+        <h3>See ranked matches</h3>
+        <p>Compare routes, timing and available seats.</p>
+      </article>
+
+      <article>
+        <b>03</b>
+        <h3>Request &amp; split fairly</h3>
+        <p>Request a seat and see the estimated cost split.</p>
+      </article>
+    </div>
+  </section>
+
+  <section class="safety" id="safety">
+    <div class="heart">♡</div>
+    <div>
+      <p class="eyebrow">SAFETY &amp; TRANSPARENCY</p>
+      <h2>Informed decisions, honestly labelled.</h2>
+      <p>
+        Profile labels and ratings are examples only; this prototype
+        doesn't verify identities or run background checks.
+      </p>
+
+      <div class="safety-grid">
+        <span><b>✓ Clear trip details</b>
+          <small>Check pickup, destination, time and seats.</small>
+        </span>
+        <span><b>✓ Confirm pickup</b>
+          <small>Agree on an exact public pickup spot.</small>
+        </span>
+        <span><b>✓ Tell someone</b>
+          <small>Share your trip details with someone you trust.</small>
+        </span>
+      </div>
+
+      <div class="report">
+        Reports recorded on this device:
+        <b id="reports">0</b>
+        <button id="reportBtn">Report a concern</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <a class="logo" href="#top">
+    <span>w</span>
+    <b>WAYLO<small>Your route. Shared.</small></b>
+  </a>
+  <p>Hackathon prototype · sample data · no payments, GPS or real bookings.</p>
+  <a href="#top">Back to top ↑</a>
+</footer>
+
+<div id="toast" class="toast"></div>
+<script src="script.js"></script>
+</body>
+</html>
